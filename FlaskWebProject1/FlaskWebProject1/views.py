@@ -64,7 +64,7 @@ def wf_submit() :
         f = open(fname,"a+");
         f.write(str(mydata)+"\n")
         wflog.submit(mydata)
-        #return 'success: POST wf submit'
+        return 'success: POST wf submit'
     else:
         mydata = {}
         mydata['wfid'] = request.args.get('wfid')
