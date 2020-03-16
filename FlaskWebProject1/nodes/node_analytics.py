@@ -25,6 +25,7 @@ for i in range(len(list)):
     dict=list[i]
     path=dict['img_path']
     msgid=dict['msgid']
+    id = int(msgid[3:])
     image = cv2.imread(path)
     grayImage = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(grayImage)    
@@ -47,8 +48,8 @@ for i in range(len(list)):
     dict['wfid'] = 'wf_ANALYTICS'
     dict['node'] = 'node_analytics'
     print(dict)
-    print(msgid)
-    node_url = 'http://localhost:5000/wfe/node/process/msg{0}'.format(i+1)
+    print(id)
+    node_url = 'http://localhost:5000/wfe/node/process/msg{0}'.format(id)
     response=requests.post(url, json=dict)
     response1=requests.post(node_url)
     print('response',response)
