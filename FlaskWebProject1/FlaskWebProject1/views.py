@@ -60,7 +60,7 @@ def wf_submit() :
         mydata['img_path'] = img_path
         d=os.getcwd()
         d1 = os.path.join(d,"nodes")
-        fname = os.path.join(d1,"my_camera.json") 
+        fname = os.path.join(d1,"buffer.json") 
         f = open(fname,"a+");
         f.write(str(mydata)+"\n")
         wflog.submit(mydata)
@@ -121,7 +121,7 @@ def node_submit() :
         nodelog.submit(mydata)
         return 'success: GET node submit'
 
-@app.route('/wfe/node/process/<checker>',methods=['GET'])
+@app.route('/wfe/node/process/<checker>',methods=['POST', 'GET'])
 def node_process(checker) :
     global nodelog
 

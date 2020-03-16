@@ -5,8 +5,8 @@ http://localhost:5000/wfe/wf/condition
 
 
 http://localhost:5000/wfe/node/submit?wfid=wf1&node=node1&data=mydata 
-http://localhost:5000/wfe/node/process
 http://localhost:5000/wfe/display/node
+#http://localhost:5000/wfe/node/process
 http://localhost:5000/wfe/node/process/msg1
 http://localhost:5000/wfe/node/process/msgid=msg1
  

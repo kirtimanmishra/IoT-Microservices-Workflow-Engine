@@ -15,16 +15,16 @@ from PIL import Image
 face_cascade = cv2.CascadeClassifier('D:/Projects/IoT Project/FlaskWebProject1/FlaskWebProject1/haarcascade_frontalface_default.xml')
 
 
-with open('my_camera.json') as f:
+with open('buffer.json') as f:
     content = f.readlines()
 list = [ ast.literal_eval( line ) for line in content ]
 
 for i in range(len(list)):
-    #print(len(file))
     url = 'http://localhost:5000/wfe/wf/submit'
     dict={}
     dict=list[i]
     path=dict['img_path']
+    msgid=dict['msgid']
     image = cv2.imread(path)
     grayImage = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(grayImage)    
@@ -47,8 +47,12 @@ for i in range(len(list)):
     dict['wfid'] = 'wf_ANALYTICS'
     dict['node'] = 'node_analytics'
     print(dict)
+    print(msgid)
+    node_url = 'http://localhost:5000/wfe/node/process/msg{0}'.format(i+1)
     response=requests.post(url, json=dict)
+    response1=requests.post(node_url)
     print('response',response)
+    print('response',response1)
     #break
     #img.show()
     
