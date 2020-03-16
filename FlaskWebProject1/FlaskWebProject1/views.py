@@ -63,7 +63,7 @@ def wf_submit() :
         fname = os.path.join(d1,"buffer.json") 
         f = open(fname,"a+");
         f.write(str(mydata)+"\n")
-        wflog.submit(mydata)
+        #wflog.submit(mydata)
         return 'success: POST wf submit'
     else:
         mydata = {}
