@@ -14,10 +14,10 @@ def GetIoTData():
         wfID = jsonData['wfID']
         jsonData['nodeID']='node_AC'
         msgid = jsonData['msgid']
-        jsonData['status']='pending'
+        jsonData['status']='processed'
+        paramData={'nodeID':'node_AC', 'wfID':wfID, 'msgid':msgid, 'status': 'processed'}
         url = 'http://localhost:5010/wfEngine/submit'
-        response=requests.get(url, json=jsonData)
-        msgid = jsonData['msgid']
+        response = requests.get(url, params=paramData)
         print('Connecting To IoT from Node AC')
         print("Curresponding Meggage Id:"+msgid)
         print('response',response)

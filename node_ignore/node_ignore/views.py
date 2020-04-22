@@ -12,12 +12,12 @@ def GetIgnoreIoTData():
     if(request.method == 'POST'):
         jsonData = request.json
         wfID = jsonData['wfID']
+        msgid = jsonData['msgid']
         jsonData['nodeID']='node_ignore'
-        msgid = jsonData['msgid']
-        jsonData['status']='pending'
+        jsonData['status']='processed'
+        paramData={'nodeID':'node_ignore', 'wfID':wfID, 'msgid':msgid, 'status': 'processed'}
         url = 'http://localhost:5010/wfEngine/submit'
-        response=requests.get(url, json=jsonData)
-        msgid = jsonData['msgid']
+        response = requests.get(url, params=paramData)
         print('Connecting To IoT')
         print("Curresponding Meggage Id:"+msgid)
         print('response',response)

@@ -15,10 +15,13 @@ sys.path.append(conditionsBaseFolder)
 @app.route('/wfEngine/submit',methods = ['GET','POST'])
 def wf_submit() :
     if(request.method == 'GET'):
-        jsonData = request.json
         nodeID = request.args.get("nodeID")
         wfID = request.args.get("wfID")
-        print("Last Node: "+str(nodeID))
+        msgid = request.args.get("msgid")
+        print("Last Node's Data: ")
+        print(nodeID)
+        print(wfID)
+        print(msgid)
         #store_log(wfID,nodeID,'processed')
         print('Log stored')
         print('Workflow Finished Or Not Started')
